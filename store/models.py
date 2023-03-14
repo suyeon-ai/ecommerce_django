@@ -24,7 +24,7 @@ class Product(models.Model):
     
     # to be exposed
     product_name = models.CharField(max_length=255)
-    price = models.DecimalField(max_digits=4, decimal_places=2)
+    price = models.DecimalField(max_digits=7, decimal_places=0)
     description = models.TextField(blank=True)
     product_image = models.ImageField(upload_to='images/')
     detail_image = models.ImageField(upload_to='images/')
