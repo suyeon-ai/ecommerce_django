@@ -3,3 +3,4 @@ migrations/
 ecommerce_django_env/
 .env
 media/
+htmlcov/
