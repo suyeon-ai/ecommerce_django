@@ -2,3 +2,4 @@ __pycache__/
 migrations/
 ecommerce_django_env/
 .env
+media/
