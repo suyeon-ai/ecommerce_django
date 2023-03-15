@@ -1,7 +1,83 @@
 {% extends './base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    testing html
+
+    <section class="py-5 text-center container">
+        <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+            <img src="\media\images\ARMYBOMB_CASE.jpg" class="d-block w-50 mx-auto" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+            <img src="\media\images\BUTTER.jpg" class="d-block w-50 mx-auto" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+            <img src="\media\images\sowoozoo.png" class="d-block w-50 mx-auto" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+        <div class="row fw-bold pb-3">
+
+            {% if category.name %}
+            <span>{{ category.name|title }} Products</span>
+            {% else %}
+            <span>All Products</span>
+            {% endif %}
+
+        </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            {% for product in products %}
+
+            <div class="col">
+            <div class="card shadow-sm">
+                <a href="{{ product.get_absolute_url }}" class="btn my-2">
+                  <img class="card-img-top" width="100%" height="225" src="{{ product.product_image.url }}"></img>
+                
+                  <div class="card-body">
+                  <h5 class="card-title text-start">{{ product.product_name|title }}</h5>
+                  <h6 class="card-text mb-2 text-muted text-start">₩ {{ product.price|intcomma }}</h6>
+                  <p class="card-text text-start"></p>
+                </a>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Buy It Now</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">♡ Add to Wishlist</button>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="card-footer">
+                    <p class="card-text text-end text-muted">Views 1.8K</p>
+                  </div>
+            </div>
+            </div>
+            
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+
 {% endblock %}
