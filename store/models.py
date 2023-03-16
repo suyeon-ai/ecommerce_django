@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.urls import reverse
 
 class Category(models.Model):
     name = models.CharField(max_length=255, db_index=True)
@@ -10,8 +10,8 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'categories'
         
-    # def get_absolute_url(self):
-    #     return reverse("store:category_list", args=[self.slug])
+    def get_absolute_url(self):
+        return reverse("store:category_list", args=[self.slug])
     
     def __str__(self):
         return self.name
@@ -41,6 +41,9 @@ class Product(models.Model):
         verbose_name_plural = 'products'
         # listed in descending order by creation date
         ordering = ('-created',)
+        
+    def get_absolute_url(self):
+        return reverse("store:product_detail", args=[self.slug])    
 
     def __str__(self):
         return self.product_name

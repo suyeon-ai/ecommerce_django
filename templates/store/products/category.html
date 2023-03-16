@@ -1,0 +1,52 @@
+{% extends '../base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+        <div class="row fw-bold pb-3">
+
+            {% if category.name %}
+            <span>{{ category.name }}</span>
+            {% else %}
+            <span>All Products</span>
+            {% endif %}
+            
+        </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            {% for product in products %}
+
+            <div class="col">
+            <div class="card shadow-sm">
+                <a href="{{ product.get_absolute_url }}" class="btn my-2">
+                  <img class="card-img-top" width="100%" height="100%" src="{{ product.product_image.url }}"></img>
+                
+                  <div class="card-body">
+                  <h5 class="card-title text-start">{{ product.product_name|title }}</h5>
+                  <h6 class="card-text mb-2 text-muted text-start">₩ {{ product.price|intcomma }}</h6>
+                  <p class="card-text text-start"></p>
+                </a>
+                  <div class="justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Buy It Now</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">♡ Add to Wishlist</button>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="card-footer">
+                    <p class="card-text text-end text-muted">Views 1.8K</p>
+                  </div>
+            </div>
+            </div>
+            
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+
+{% endblock %}

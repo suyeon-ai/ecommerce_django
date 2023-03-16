@@ -14,3 +14,13 @@ def all_products(request):
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug, in_stock=True, is_active=True)
     return render(request, 'store/products/detail.html', {'product': product})
+
+def category_list(request, category_slug):
+    if category_slug != 'all':
+        category = get_object_or_404(Category, slug=category_slug)
+        products = Product.objects.filter(category=category)
+        return render(request, 'store/products/category.html', {'category':category, 'products': products})
+    elif category_slug == 'all':
+        category = 'All'
+        products = Product.objects.all()
+        return render(request, 'store/products/category.html', {'category':category, 'products': products})

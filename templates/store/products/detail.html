@@ -5,7 +5,7 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="\media\images\BUTTER.jpg" alt="..." /></div>
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{ product.product_image.url }}" alt="..." /></div>
             <div class="col-md-6">
                 <!--<div class="small mb-1">SKU: BST-498</div>-->
                 <h1 class="display-5 fw-bolder">{{ product.product_name }}</h1>
@@ -23,7 +23,7 @@
                         </select>
                     </div>
                     <div class="row mb-3">
-                        <label for="form-select" class="col-sm-auto col-form-label">Qty</label>
+                        <label for="select" class="col-sm-auto col-label">Qty</label>
                         <div class="col-sm-10">
                             <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                             <option selected>Open this select menu</option>
@@ -73,12 +73,16 @@
 </section>
 
 <section class="py-5">
-    <p class="lead">{{ product.description|slice:"50" }}</p>
+    <div class="container-xxl">
+        <div class="alert alert-success" role="alert">
+        <p class="mb-0">{{ product.description }}</p>
+        </div>
+    </div>
 </section>
 
 <section class="py-5">
     <div class="container-xxl">
-        <img src="\media\images\BUTTER_DETAIL.jpg" class="d-block w-50 mx-auto" alt="...">
+        <img src="{{ product.detail_image.url }}" class="d-block w-50 mx-auto" alt="...">
     </div>
 </section>
 <!-- Related items section-->
