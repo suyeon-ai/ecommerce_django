@@ -15,7 +15,9 @@
 
 <body>
     <div class="container">
+    <br>
         <div class="d-flex flex-wrap align-items-end justify-content-end justify-content-lg-end">
+          <button type="button" class="btn btn-light text-dark me-2 float-right">My cart</button>
           <button type="button" class="btn btn-light text-dark me-2 float-right">Login</button>
           <button type="button" class="btn btn-primary float-right">Sign-up</button>
         </div>
@@ -29,9 +31,9 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Company</a></li>
-          <div class="dropdown">
+          <li><a href="#" class="nav-link px-3 link-secondary">Home</a></li>
+          <li><a href="#" class="nav-link px-3 link-dark">Company</a></li>
+          <div class="dropdown px-3">
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Products
             </button>
@@ -43,11 +45,11 @@
                 <li><a class="dropdown-item" href="#">{{ category.name|title }}</a></li>
                 
                 {% endfor %}
-                
+
             </ul>
           </div>
-          <li><a href="#" class="nav-link px-2 link-dark">Community</a></li> 
-          <li><a href="#" class="nav-link px-2 link-dark">Q&A</a></li>
+          <li><a href="#" class="nav-link px-3 link-dark">Q&A</a></li>
+          <li><a href="#" class="nav-link px-3 link-dark">Community</a></li> 
         </ul>
 
         <div class="text-end">
