@@ -1,13 +1,12 @@
 # from unittest import skip
 
-from django.test import Client, RequestFactory, TestCase
-from django.http import HttpRequest
 from django.contrib.auth.models import User
-from .models import Category, Product
-from django.test import Client
+from django.http import HttpRequest
+from django.test import Client, RequestFactory, TestCase
 from django.urls import reverse
 
-from .views import all_products
+from .models import Category, Product
+from .views import all_products, category_list
 
 class TestCategoriesModel(TestCase):
     
@@ -44,7 +43,7 @@ class TestProductsModel(TestCase):
 
 
 class TestViewResponses(TestCase):
-    
+     
     def setUp(self):
         self.client = Client()
         self.factory = RequestFactory()
@@ -71,10 +70,18 @@ class TestViewResponses(TestCase):
         self.assertTrue(html.startswith('\n<!DOCTYPE html>\n'))
         self.assertEqual(response.status_code, 200)
         
-    def test_view_function(self):
+    def test_view_detail_function(self):
         request = self.factory.get('item/butter')
         response = all_products(request)
         html = response.content.decode('utf8')
         self.assertIn('<title>Home</title>', html)
         self.assertTrue(html.startswith('\n<!DOCTYPE html>\n'))
         self.assertEqual(response.status_code, 200)
+    
+    # def test_view_category_function(self):
+    #     request = self.factory.get('search/dvd')
+    #     response = category_list(request, 'search/dvd')
+    #     html = response.content.decode('utf8')
+    #     self.assertIn('<title>Home</title>', html)
+    #     self.assertTrue(html.startswith('\n<!DOCTYPE html>\n'))
+    #     self.assertEqual(response.status_code, 200)    
