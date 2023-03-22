@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # specify database as mysql
-env = environ.Env(DEBUUG=(bool, True))
+env = environ.Env(DEBUG=(bool, True))
 
 environ.Env.read_env(
     env_file = os.path.join(BASE_DIR, '.env')
@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'store',
+    'basket',
 ]
 
 MIDDLEWARE = [
@@ -82,6 +83,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'store.views.categories',
+                'basket.context_processors.basket',
             ],
         },
     },
